@@ -1,1 +1,1 @@
-npx concurrently "cd client & yarn start" "cd api & yarn dev"
+concurrently "cd client & yarn start" "cd api & yarn dev"
