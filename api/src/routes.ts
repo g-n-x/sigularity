@@ -1,9 +1,8 @@
 import { Router, Request, Response } from 'express'
-import multer from 'multer'
-import FileController from './controller/FileController'
+import FileService from './service/FileService'
+import upload from './service/multer'
 
 const router = Router()
-const upload = multer()
 
 router.get('/', (req: Request, res: Response) => {
     console.log('request from: ' + req.ip)
@@ -12,6 +11,9 @@ router.get('/', (req: Request, res: Response) => {
     })
 })
 
-router.post('/image', upload.single('img'), FileController.store)
+router.post('/image', upload.single('content'), function(req: any, res: any) {
+    FileService.saveImage(req.file.path)
+    .then(a => console.log('success'))
+})
 
 export default router
