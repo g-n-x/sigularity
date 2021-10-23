@@ -8,6 +8,7 @@ import {
     Button
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
+import DarkModeIcon from '@mui/icons-material/DarkMode'
 
 const NavBar: React.FC = () => {
     return (
@@ -24,6 +25,14 @@ const NavBar: React.FC = () => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>Singularity</Typography>
+                    <IconButton
+                        color="inherit"
+                        size="large"
+                        edge="start"
+                        sx={{ mr: 2 }}
+                    >
+                        <DarkModeIcon />
+                    </IconButton>
                     <Button color="inherit">Add</Button>
                 </Toolbar>
             </AppBar>
