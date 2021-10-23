@@ -2,10 +2,16 @@
     "compilerOptions": {
         "rootDir": "./src",
         "outDir": "./build",
-        "target": "es5",
-        "esModuleInterop": true
+        "target": "esnext",
+        "esModuleInterop": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "strict": true
     },
     "include": [
         "src"
+    ],
+    "exclude": [
+        "node_modules"
     ]
 }
