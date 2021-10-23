@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express'
 import db from './database'
 import routes from './routes'
+import cors from 'cors'
 
 try {
     db.sync().then(
@@ -12,7 +13,8 @@ try {
 
 const app: Express = express()
 
-app.use(routes)
+app.use(cors())
+app.use('/', routes)
 
 app.listen(6475, () => {
     console.log('listening on port 6475')
