@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "npx nodemon --watch .\\src\\ --exec \"ts-node src/index.ts\" -e ts"
+    "dev": "npx nodemon --watch ./src/ --exec \"ts-node src/index.ts\" -e ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
