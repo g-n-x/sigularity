@@ -15,6 +15,7 @@ const app: Express = express()
 
 app.use(cors())
 app.use('/', routes)
+app.use('/static', express.static('uploadedContent'))
 
 app.listen(6475, () => {
     console.log('listening on port 6475')
