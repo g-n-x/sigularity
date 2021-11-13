@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './components/NavBar';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { deepOrange, grey } from '@mui/material/colors'
+import ContentViewer from './components/ContentViewer';
 
 
 const App: React.FC = () => {
@@ -23,6 +24,7 @@ const App: React.FC = () => {
     <>
       <ThemeProvider theme={theme}>
         <NavBar></NavBar>
+        <ContentViewer></ContentViewer>
       </ThemeProvider>
     </>
   );

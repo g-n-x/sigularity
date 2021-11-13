@@ -1,12 +1,12 @@
-import Image from '../models/Image'
-import fs from 'fs'
+import Content from '../models/Content'
+import crypto from 'crypto'
 import nodepath from 'path'
 
 class FileService {
     static async saveImage(path: string) {
-        await Image.create({
-            fileName: nodepath.basename(path),
-            content: fs.readFileSync(path)
+        await Content.create({
+            filePath: nodepath.basename(path),
+            fileUrl: crypto.randomBytes(20).toString('hex')
         })
     }
 }
