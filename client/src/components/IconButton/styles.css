@@ -1,0 +1,13 @@
+.icon-button {
+    background-color: #fefefe;
+    border-radius: 13px;
+    width: 45px;
+    height: 45px;
+    font-size: 21px;
+    border: none;
+}
+
+.icon-button:hover {
+    filter: brightness(.8);
+    cursor: pointer;
+}

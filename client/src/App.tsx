@@ -1,32 +1,18 @@
-import React from 'react';
-import NavBar from './components/NavBar';
-import { ThemeProvider, createTheme } from '@mui/material/styles'
-import { deepOrange, grey } from '@mui/material/colors'
-import ContentViewer from './components/ContentViewer';
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import IconButton from './components/IconButton';
+import Searchbar from './components/Searchbar';
+import './styles/global.css'
 
-
-const App: React.FC = () => {
-  const theme = createTheme({
-    palette: {
-      primary: deepOrange,
-      divider: deepOrange[700],
-      background: {
-        default: deepOrange[900],
-        paper: deepOrange[900],
-      },
-      text: {
-        primary: '#fff',
-        secondary: grey[500],
-      }
-    }
-  });
+function App() {
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <NavBar></NavBar>
-        <ContentViewer></ContentViewer>
-      </ThemeProvider>
-    </>
+    <div>
+      <div className="actions">
+        <Searchbar />
+        <IconButton icon={faPlus}/>
+      </div>
+      <div className="cardArea">
+      </div>
+    </div>
   );
 }
 

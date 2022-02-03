@@ -1,0 +1,8 @@
+.searchbar {
+    font-size: 24px;
+    border-radius: 7px;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    width: 40%;
+}

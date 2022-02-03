@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'RobotoMono', monospace;
+    src: local('RobotoMono'), url('../assets/fonts/RobotoMono-Regular.ttf') format('truetype');
+}
+
+::-webkit-scrollbar { width: 8px; height: 3px;}
+::-webkit-scrollbar-button {  background-color: #667; }
+::-webkit-scrollbar-track {  background-color: #646464;}
+::-webkit-scrollbar-track-piece { background-color: #000;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #667;}
+::-webkit-scrollbar-corner { background-color: #646464;}
+::-webkit-resizer { background-color: #667;}
+
+* {
+    font-family: 'RobotoMono', monospace;
+}
+
+body {
+    margin: 0;
+    background-color: #212529;
+}
+
+/* main component (App) css */
+
+.actions {
+    width: 100vw;
+    padding: 50px;
+
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+}
