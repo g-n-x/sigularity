@@ -6,15 +6,15 @@ import Searchbar from './components/Searchbar';
 import './styles/global.css'
 
 function App() {
-  // this is for modal
-  window.onclick = (e: any) => {
-    if(e.target.id === 'closer') {
-      console.log(modal)
-      setModal(false)
-    }
-  }
-
   useEffect(() => {
+    // this is for modal
+    window.onclick = (e: any) => {
+      if(e.target.id === 'closer') {
+        console.log(modal)
+        setModal(false)
+      }
+    }
+
     // cleanup
     return () => {
       window.onclick = null
