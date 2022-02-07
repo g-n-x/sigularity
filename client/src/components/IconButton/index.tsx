@@ -4,12 +4,13 @@ import './styles.css'
 
 interface IconButtonProps {
     icon: IconDefinition;
+    onClick: React.MouseEventHandler
 }
 
 
-function IconButton({ icon }: IconButtonProps) {
+function IconButton({ icon, onClick }: IconButtonProps) {
     return (
-        <button className="icon-button">
+        <button onClick={onClick} className="icon-button">
             <FontAwesomeIcon icon={icon} />
         </button>
     )
