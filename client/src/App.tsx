@@ -30,9 +30,26 @@ function App() {
       </div>
       <div className="cardArea">
       </div>
-      {modal && <Modal>
-        <p>it works</p>
-      </Modal>}
+      { modal &&
+        <Modal>
+          <form>
+            <label htmlFor="filename">filename: </label>
+            <input type="text" name="filename" id="filename" />
+            <br/>
+            {/*
+              maybe create name randomization with redireciton?
+              there will be one link, with expiration
+              but each time the link is clicked, the user is redirected
+              to somewhere else
+             */}
+            <label htmlFor="randomizename">randomization </label>
+            <input type="checkbox" name="randomizename" id="randomizename" />
+            <br/>
+            <label htmlFor="file">file: </label>
+            <input type="file" name="file" id="file" />
+          </form>
+        </Modal>
+      }
     </div>
   );
 }

@@ -4,7 +4,7 @@ import './styles.css'
 
 interface IconButtonProps {
     icon: IconDefinition;
-    onClick: React.MouseEventHandler
+    onClick?: React.MouseEventHandler
 }
 
 
