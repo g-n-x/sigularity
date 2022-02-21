@@ -6,13 +6,22 @@ import Searchbar from './components/Searchbar';
 import './styles/global.css'
 
 function App() {
+  const [modal, setModal] = useState(false)
+
+  const openFileDialog = () => {
+    const inputElement = document.createElement('input')
+    inputElement.type = 'file'
+    inputElement.onchange = () => {
+      console.log(inputElement.files)
+    }
+    inputElement.click()
+  }
+
   useEffect(() => {
     // this is for modal
     window.onclick = (e: any) => {
-      if(e.target.id === 'closer') {
-        console.log(modal)
+      if(e.target.id === 'closer')
         setModal(false)
-      }
     }
 
     // cleanup
@@ -21,7 +30,6 @@ function App() {
     }
   })
 
-  const [modal, setModal] = useState(false)
   return (
     <div>
       <div className="actions">
@@ -33,11 +41,11 @@ function App() {
       { modal &&
         <Modal>
           <form>
-            <label htmlFor="filename">filename: </label>
+            <label onClick={openFileDialog} htmlFor="filename">filename: </label>
             <input type="text" name="filename" id="filename" />
             <br/>
             {/*
-              maybe create name randomization with redireciton?
+              maybe create name randomization with redirection?
               there will be one link, with expiration
               but each time the link is clicked, the user is redirected
               to somewhere else
