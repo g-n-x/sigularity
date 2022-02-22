@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from 'express'
+import express, { Express } from 'express'
 import db from './database'
 import routes from './routes'
 import cors from 'cors'
@@ -14,9 +14,10 @@ try {
 const app: Express = express()
 
 app.use(cors())
-app.use('/', routes)
+app.use('/api', routes)
 app.use('/static', express.static('uploadedContent'))
 
-app.listen(6475, () => {
-    console.log('listening on port 6475')
+const PORT = process.env.PORT || 8988
+app.listen(PORT, () => {
+    console.log('listening on port ' + PORT)
 })

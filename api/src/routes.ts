@@ -11,8 +11,8 @@ router.get('/', (req: Request, res: Response) => {
     })
 })
 
-router.post('/image',
-    upload.single('content'),
+router.post('/file',
+    upload.single('file'),
     FileController.store
 )
 

@@ -1,21 +1,24 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import IconButton from './components/IconButton';
 import Modal from './components/Modal';
 import Searchbar from './components/Searchbar';
+import api from './services/api';
 import './styles/global.css'
 
 function App() {
   const [modal, setModal] = useState(false)
+  const [fileList, setFileList] = useState<FileList>()
 
-  const openFileDialog = () => {
-    const inputElement = document.createElement('input')
-    inputElement.type = 'file'
-    inputElement.onchange = () => {
-      console.log(inputElement.files)
-    }
-    inputElement.click()
-  }
+  const uploadFile = useCallback(async (e: React.FormEvent) => {
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append('file', fileList![0])
+
+    await api.post('/file', formData)
+
+    setFileList(undefined)
+  }, [fileList])
 
   useEffect(() => {
     // this is for modal
@@ -40,8 +43,8 @@ function App() {
       </div>
       { modal &&
         <Modal>
-          <form>
-            <label onClick={openFileDialog} htmlFor="filename">filename: </label>
+          <form onSubmit={uploadFile}>
+            <label htmlFor="filename">filename: </label>
             <input type="text" name="filename" id="filename" />
             <br/>
             {/*
@@ -54,7 +57,15 @@ function App() {
             <input type="checkbox" name="randomizename" id="randomizename" />
             <br/>
             <label htmlFor="file">file: </label>
-            <input type="file" name="file" id="file" />
+            <input
+              type="file"
+              name="file"
+              id="file"
+              onChange={(e) => setFileList(e.target.files!)}
+            />
+            <br/>
+            <br/>
+            <button type="submit">upload</button>
           </form>
         </Modal>
       }
