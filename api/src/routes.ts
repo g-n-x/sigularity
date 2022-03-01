@@ -1,4 +1,5 @@
 import { Router, Request, Response } from 'express'
+import ContentController from './controller/ContentController'
 import FileController from './controller/FileController'
 import upload from './service/multer'
 
@@ -10,6 +11,9 @@ router.get('/', (req: Request, res: Response) => {
         status: 'success'
     })
 })
+
+router.get('/content', ContentController.retrieveAll)
+router.get('/content/:filePath', FileController.readFile)
 
 router.post('/file',
     upload.single('file'),

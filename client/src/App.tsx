@@ -6,9 +6,18 @@ import Searchbar from './components/Searchbar';
 import api from './services/api';
 import './styles/global.css'
 
+interface Content {
+  id: number
+  filePath: string
+  fileUrl: string
+  createdAt: Date
+  updatedAt: Date
+}
+
 function App() {
   const [modal, setModal] = useState(false)
   const [fileList, setFileList] = useState<FileList>()
+  const [contents, setContents] = useState<Content[]>()
 
   const uploadFile = useCallback(async (e: React.FormEvent) => {
     e.preventDefault()
@@ -20,7 +29,15 @@ function App() {
     setFileList(undefined)
   }, [fileList])
 
+  const loadContent = useCallback(async () => {
+    const r = await api.get('/content')
+    setContents(r.data)
+  }, [])
+
   useEffect(() => {
+    // get all content
+    loadContent()
+    
     // this is for modal
     window.onclick = (e: any) => {
       if(e.target.id === 'closer')
@@ -31,7 +48,7 @@ function App() {
     return () => {
       window.onclick = null
     }
-  })
+  }, [])
 
   return (
     <div>
@@ -40,6 +57,15 @@ function App() {
         <IconButton onClick={()=> setModal(true)} icon={faPlus}/>
       </div>
       <div className="cardArea">
+        {
+          contents &&
+          contents.map(c =>
+            <div style={{backgroundColor: 'white'}}>
+            <h1>{c.filePath}</h1>
+            <img width={600} src={'http://localhost:8988/api/content/'+c.fileUrl} />
+            </div>
+          )
+        }
       </div>
       { modal &&
         <Modal>
